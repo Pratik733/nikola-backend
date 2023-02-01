@@ -5,6 +5,27 @@ import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth.js";
 import dashRoutes from "./routes/dash.js";
 
+//middlewares
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Credentials", true);
+  next();
+});
+app.use(express.json());
+app.use(
+  cors({
+    // origin: "http://18.179.22.26",
+    origin: "http://localhost:3001",
+  })
+);
+app.use(cookieParser());
+
+app.use("/api/auth", authRoutes);
+app.use("/api/dash", dashRoutes);
+
+app.listen(8000, () => {
+  console.log("API working!");
+});
+
 // app.use(cors());
 // app.use(express.json());
 
@@ -112,24 +133,3 @@ import dashRoutes from "./routes/dash.js";
 // app.listen(3002, () => {
 //   console.log("ur sever is running on port 3002");
 // });
-
-//middlewares
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
-app.use(express.json());
-app.use(
-  cors({
-    origin: "http://18.179.22.26",
-    // origin: "http://localhost:3001",
-  })
-);
-app.use(cookieParser());
-
-app.use("/api/auth", authRoutes);
-app.use("/api/dash", dashRoutes);
-
-app.listen(8000, () => {
-  console.log("API working!");
-});
