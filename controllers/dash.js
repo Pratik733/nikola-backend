@@ -1,7 +1,7 @@
 import { db } from "../connect.js";
 
 export const dash = (req, res) => {
-  const q = "SELECT * FROM vehicles WHERE vid = ?";
+  const q = "SELECT * FROM Veh_info WHERE Vehicle_ID = ?";
   const vid = req.body.vid;
   //   console.log(vid);
   db.query(q, [vid], (err, result) => {

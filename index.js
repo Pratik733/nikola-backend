@@ -121,6 +121,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 app.use(
   cors({
+    // origin: "http://54.95.213.158:8000",
     origin: "http://localhost:3001",
   })
 );
