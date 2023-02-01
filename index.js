@@ -12,10 +12,11 @@ app.use((req, res, next) => {
 });
 app.use(express.json());
 app.use(
-  cors({
-    origin: "http://18.179.22.26",
-    // origin: "http://localhost:3001",
-  })
+  cors()
+  // cors({
+  //   // origin: "http://18.179.22.26",
+  //   origin: "http://localhost:3001",
+  // })
 );
 app.use(cookieParser());
 
